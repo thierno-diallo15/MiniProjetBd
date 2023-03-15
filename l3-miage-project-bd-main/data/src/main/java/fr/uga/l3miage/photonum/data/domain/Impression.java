@@ -9,8 +9,14 @@ import java.util.Set;
 
 @Entity
 public class Impression {
-
+    
     @Id
     @GeneratedValue
     private Long id; // remplacer car String si besoin
+    private Double price;
+    // TODO the mapping 
+    private Catalog formatQuality;
+    
+    //todo Generate getters and the setters after mapping 
 }
+
