@@ -1,6 +1,7 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.persistence.Column;
@@ -18,7 +19,7 @@ public class Client {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "firsName", nullable = false)
@@ -27,29 +28,28 @@ public class Client {
     @Column
     private String lastName;
 
-    @Column(name = "password" ,nullable= false)
-    private String  password;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Column
-    private List<String> address;
+    private Set<String> addresses;
 
+    @OneToMany(mappedBy = "person")
+    private List<Impression> impressions;
 
-    @OneToMany
-    private List<Impression> impressions ;
-
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private List<Photo> photos;
 
-    @OneToMany
-    private List<Command> commandes;
+    @OneToMany(mappedBy = "client")
+    private List<Command> commands;
 
-    public Client(Long id, String email, String firstName, String lastName, String password, List<String> address) {
+    public Client(Long id, String email, String firstName, String lastName, String password, Set<String> addresses) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.address = address;
+        this.addresses = addresses;
     }
 
     public Long getId() {
@@ -92,11 +92,11 @@ public class Client {
         this.password = password;
     }
 
-    public List<String> getAddress() {
-        return address;
+    public Set<String> getAddresses() {
+        return addresses;
     }
 
-    public void setAddress(List<String> address) {
-        this.address = address;
+    public void setAddress(Set<String> addresses) {
+        this.addresses = addresses;
     }
 }
