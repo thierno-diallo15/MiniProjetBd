@@ -8,11 +8,11 @@ import java.util.Random;
 public class Fixtures {
 
     private static final Faker FAKER = Faker.instance(new Random(42));
-
-    public static Impression newImpression() {
-        Impression impression = new Impression();
-        // ...
-        return impression;
-    }
+// A revoire pourquoi 
+    /*public static Impression newImpression() {
+       // Impression impression = new Impression();
+    
+        //return impression;
+    }*/
 
 }

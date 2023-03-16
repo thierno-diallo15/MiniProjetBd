@@ -16,8 +16,8 @@
 spring:
   datasource:
     url: jdbc:oracle:thin:@im2ag-oracle.univ-grenoble-alpes.fr:1521:im2ag
-    username: # à remplir
-    password:
+    username: barryibr
+    password: 90a8468110
   jpa:
     properties:
       hibernate:

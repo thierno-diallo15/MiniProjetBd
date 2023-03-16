@@ -10,8 +10,8 @@ public interface ImpressionMapper {
     ImpressionDTO entityToDTO(Impression impression);
 
     Collection<ImpressionDTO> entityToDTO(Iterable<Impression> authors);
+//A revoir ***
+   // Impression dtoToEntity(ImpressionDTO author);
 
-    Impression dtoToEntity(ImpressionDTO author);
-
-    Collection<Impression> dtoToEntity(Iterable<ImpressionDTO> authors);
+   // Collection<Impression> dtoToEntity(Iterable<ImpressionDTO> authors);
 }
