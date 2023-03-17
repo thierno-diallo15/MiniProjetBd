@@ -1,12 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
@@ -21,25 +15,25 @@ import jakarta.persistence.TemporalType;
 @DiscriminatorValue("C")
 public class Calendar extends Impression {
     //todo the mapping 
-    @Column(name = "annee",nullable = false)
+    @Column(name = "year",nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date annee;
+    private Date year;
 
     @OneToMany(mappedBy = "calendar")
     private Page[] pages = new Page[12];
 
-    public Calendar(Double price, Client person, Article article, Catalog formatQuality, Date annee, Page[] pages) {
+    public Calendar(Double price, Client person, Article article, Catalog formatQuality, Date year, Page[] pages) {
         super(price, person, article, formatQuality);
-        this.annee = annee;
+        this.year = year;
         this.pages = pages;
     }
 
-    public Date getAnnee() {
-        return annee;
+    public Date getyear() {
+        return year;
     }
 
-    public void setAnnee(Date annee) {
-        this.annee = annee;
+    public void setyear(Date year) {
+        this.year = year;
     }
 
 

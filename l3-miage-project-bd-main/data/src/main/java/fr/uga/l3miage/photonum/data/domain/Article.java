@@ -1,7 +1,5 @@
 package fr.uga.l3miage.photonum.data.domain;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,23 +16,27 @@ public class Article {
     @GeneratedValue
     private Long id;
     // Todo the mapping
+    
     @Column(name = "quantity", nullable = false)
     private int quantity;
+    
     @Column(name = "price", nullable = false)
     private Double price;
     // Todo generate getters and setters afters the mapping
+    
     @ManyToOne
-    private Command command;
+    private Order order;
+    
     @OneToOne
     private Impression impression;
 
     public Article() {
     }
 
-    public Article(int quantity, Double price, Command command, Impression impression) {
+    public Article(int quantity, Double price, Order order, Impression impression) {
         this.quantity = quantity;
         this.price = price;
-        this.command = command;
+        this.order = order;
         this.impression = impression;
     }
 
@@ -62,12 +64,12 @@ public class Article {
         this.price = price;
     }
 
-    public Command getCommand() {
-        return command;
+    public Order getorder() {
+        return order;
     }
 
-    public void setCommand(Command command) {
-        this.command = command;
+    public void setorder(Order order) {
+        this.order = order;
     }
 
     public Impression getImpression() {

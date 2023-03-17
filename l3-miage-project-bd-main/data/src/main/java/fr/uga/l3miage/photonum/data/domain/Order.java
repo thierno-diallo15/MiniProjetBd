@@ -11,33 +11,36 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Command")
-public class Command {
+@Table(name = "Order")
+public class Order {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "date_command", nullable = false)
+    @Column(name = "order_date", nullable = false)
     private Date date;
     // todo the mapping
-    @Column(name = "totalprice", nullable = false)
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
-    @Column(name = "deliveryAddress", nullable = false)
-    private String deliveryAddress;
+
+    @OneToOne
+    @Column(nullable = false)
+    private Address deliveryAddress;
 
     @ManyToOne
     private Client client;
 
-    @OneToMany(mappedBy = "command")
+    @OneToMany(mappedBy = "order")
     private List<Article> articles;
 
-    public Command() {
+    public Order() {
     }
 
-    public Command(Date date, Double totalPrice, String deliveryAddress, Client client, List<Article> articles) {
+    public Order(Date date, Double totalPrice, Address deliveryAddress, Client client, List<Article> articles) {
         this.date = date;
         this.totalPrice = totalPrice;
         this.deliveryAddress = deliveryAddress;
@@ -69,11 +72,11 @@ public class Command {
         this.totalPrice = totalPrice;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 

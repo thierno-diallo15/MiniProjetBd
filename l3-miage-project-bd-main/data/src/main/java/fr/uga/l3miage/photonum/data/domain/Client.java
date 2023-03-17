@@ -31,8 +31,8 @@ public class Client {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column
-    private Set<String> addresses;
+    @OneToMany(mappedBy = "client")
+    private List<Address> addresses;
 
     @OneToMany(mappedBy = "person")
     private List<Impression> impressions;
@@ -41,9 +41,9 @@ public class Client {
     private List<Photo> photos;
 
     @OneToMany(mappedBy = "client")
-    private List<Command> commands;
+    private List<Order> commands;
 
-    public Client(Long id, String email, String firstName, String lastName, String password, Set<String> addresses) {
+    public Client(Long id, String email, String firstName, String lastName, String password, List<Address> addresses) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -92,11 +92,11 @@ public class Client {
         this.password = password;
     }
 
-    public Set<String> getAddresses() {
+    public List<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddress(Set<String> addresses) {
+    public void setAddress(List<Address> addresses) {
         this.addresses = addresses;
     }
 }

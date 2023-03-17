@@ -1,0 +1,189 @@
+-- THIS FILE IS GENERATED. DON'T TOUCH IT!!!
+
+model M
+
+enum Catalog {
+    10x20MAT,
+    25x25BRIL
+}
+
+class Client
+    attributes
+        id : Integer{id}
+        mail : String
+        password : String
+        firstName : String
+        lastName : String
+        addresses : String
+end
+
+class Image
+    attributes
+        id : Interger {id}
+        path : String
+        viewInfo : String
+        resolution : String
+        isShared : Boolean
+end
+
+class Photo < Image
+    attributes
+        settings : String
+        description : String
+end
+
+class Order
+    attributes
+        id : Integer {id}
+        date : String
+        cmdPrice : Float
+end
+
+class Article
+    attributes
+        id : Integer{id}
+        price : Float
+        quantity : Integer
+end
+
+class Impression
+    attributes
+        id : Integer
+        id : Integer{id}
+        price : Float
+        formatQuality : Catalog
+end
+
+class Print < Impression
+    attributes
+        Attribute1 : 
+end
+
+class Album < Impression
+    attributes
+        title : String
+        cover : Photo
+        pages : Page
+end
+
+class Calendar < Impression
+    attributes
+        pages : Page
+        year : String
+end
+
+class Frame < Impression
+    attributes
+        photos : List<Photo>
+        layout : String
+end
+
+class Page
+    attributes
+        photo : Photo
+        id : Integer{id}
+        layout : String
+end
+
+class Address
+    attributes
+        id : Integer{id}
+        description : String
+end
+
+association IsInFrame
+    between
+        Photo[1..*] role photoFrames
+        Frame[1] role frame
+end
+
+association IsInPage
+    between
+        Photo[1..*] role photopages
+        Page[] role page
+end
+
+association IsInPrint
+    between
+        Photo[1..*] role photoPrints
+        Print[] role 
+end
+
+association IsIn
+    between
+        Article[0..*] role articles
+        Order[1] role order
+end
+
+association 
+    between
+        Calendar[1] role 
+        Page[12] role 
+end
+
+association 
+    between
+        Calendar[] role 
+        Page[] role 
+end
+
+association 
+    between
+        Calendar[] role 
+        Page[] role 
+end
+
+association 
+    between
+        Page[1..*] role pageAlbums
+        Album[1] role album
+end
+
+association 
+    between
+        Page[] role 
+        Calendar[] role 
+end
+
+association IsComposedOf
+    between
+        Page[12] role pages
+        Calendar[1] role calendar
+end
+
+association Make
+    between
+        Client[0..1] role person
+        Impression[0..*] role impressions
+end
+
+association Order
+    between
+        Client[1] role client
+        Order[0..*] role order
+end
+
+association IsOwner
+    between
+        Client[1] role owner
+        Photo[0..*] role photos
+end
+
+association isAddressOf
+    between
+        Address[1..*] role address
+        Client[1..*] role client
+end
+
+association isInArticle
+    between
+        Impression[1] role impression
+        Article[0..1] role article
+end
+
+association deliveryAddress
+    between
+        Address[1] role address
+        Order[1] role order
+end
+
