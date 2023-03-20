@@ -1,54 +1,38 @@
 package fr.uga.l3miage.photonum.data.domain;
-
-import java.util.List;
 import java.util.Set;
-
-import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.ManyToMany;
+
 
 @Entity
-@Table(name = "Client")
 public class Client {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "email", nullable = false)
+    @Column( nullable = false)
     private String email;
 
-    @Column(name = "firsName", nullable = false)
+    @Column( nullable = false)
+    private String password;
+
+    @Column( nullable = false)
     private String firstName;
 
     @Column
     private String lastName;
 
-    @Column(name = "password", nullable = false)
-    private String password;
+    @ManyToMany
+    private Set<Address> addresses;
 
-    @OneToMany(mappedBy = "client")
-    private List<Address> addresses;
-
-    @OneToMany(mappedBy = "person")
-    private List<Impression> impressions;
-
-    @OneToMany(mappedBy = "owner")
-    private List<Photo> photos;
-
-    @OneToMany(mappedBy = "client")
-    private List<Order> commands;
-
-    public Client(Long id, String email, String firstName, String lastName, String password, List<Address> addresses) {
-        this.id = id;
+    public Client(String email, String password, String firstName, String lastName, Set<Address> addresses) {
         this.email = email;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
         this.addresses = addresses;
     }
 
@@ -56,9 +40,6 @@ public class Client {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -66,6 +47,14 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -84,19 +73,12 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddress(List<Address> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
+
 }
