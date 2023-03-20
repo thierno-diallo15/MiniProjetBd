@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Album extends Impression {
 
     @Column(name = "coverPhoto")
-    private Photo coverPhoto;
+    private Image coverPhoto;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -22,19 +22,19 @@ public class Album extends Impression {
     @OneToMany(mappedBy = "album")
     private Set<Page> pageAlbums;
 
-    public Album(Double price, Client person, Article article, Catalog formatQuality, Photo coverPhoto, String title,
+    public Album(Double price, Client person, Article article,Image coverPhoto, String title,
             Set<Page> pageAlbums) {
-        super(price, person, article, formatQuality);
+        super(price, person, article);
         this.coverPhoto = coverPhoto;
         this.title = title;
         this.pageAlbums = pageAlbums;
     }
 
-    public Photo getCoverPhoto() {
+    public Image getCoverPhoto() {
         return coverPhoto;
     }
 
-    public void setCoverPhoto(Photo coverPhoto) {
+    public void setCoverPhoto(Image coverPhoto) {
         this.coverPhoto = coverPhoto;
     }
 

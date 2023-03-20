@@ -14,14 +14,14 @@ import jakarta.persistence.Table;
 public class Frame extends Impression {
 
     @OneToMany(mappedBy = "frame")
-    private List<Photo> photoFrames;
+    private List<Image> photoFrames;
 
     @Column(name = "layout")
     private String layout;
 
-    public Frame(Double price, Client person, Article article, Catalog formatQuality, List<Photo> photoFrames,
+    public Frame(Double price, Client person, Article article, List<Image> photoFrames,
             String layout) {
-        super(price, person, article, formatQuality);
+        super(price, person, article);
         this.photoFrames = photoFrames;
         this.layout = layout;
     }
@@ -29,11 +29,11 @@ public class Frame extends Impression {
     public Frame(){
     }
 
-    public List<Photo> getPhotoFrames() {
+    public List<Image> getPhotoFrames() {
         return photoFrames;
     }
 
-    public void setPhotoFrames(List<Photo> photoFrames) {
+    public void setPhotoFrames(List<Image> photoFrames) {
         this.photoFrames = photoFrames;
     }
 

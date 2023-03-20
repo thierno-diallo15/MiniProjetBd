@@ -22,14 +22,10 @@ public abstract class Impression {
     @OneToOne
     private Article article;
 
-    @Enumerated
-    private Catalog formatQuality;
-
-    public Impression(Double price, Client person, Article article, Catalog formatQuality) {
+    public Impression(Double price, Client person, Article article) {
         this.price = price;
         this.person = person;
         this.article = article;
-        this.formatQuality = formatQuality;
     }
 
     public Impression(){
@@ -66,14 +62,6 @@ public abstract class Impression {
 
     public void setArticle(Article article) {
         this.article = article;
-    }
-
-    public Catalog getFormatQuality() {
-        return formatQuality;
-    }
-
-    public void setFormatQuality(Catalog formatQuality) {
-        this.formatQuality = formatQuality;
     }
 
     // todo Generate getters and the setters after mapping

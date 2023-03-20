@@ -27,10 +27,6 @@ public class Order {
     @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
-    @OneToOne
-    @Column(nullable = false)
-    private Address deliveryAddress;
-
     @ManyToOne
     private Client client;
 
@@ -40,10 +36,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date date, Double totalPrice, Address deliveryAddress, Client client, List<Article> articles) {
+    public Order(Date date, Double totalPrice, Client client, List<Article> articles) {
         this.date = date;
         this.totalPrice = totalPrice;
-        this.deliveryAddress = deliveryAddress;
         this.client = client;
         this.articles = articles;
     }
@@ -70,14 +65,6 @@ public class Order {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
     }
 
     public Client getClient() {

@@ -8,12 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name="type_image", discriminatorType = DiscriminatorType.STRING)
 @Table(name= "Image")
 public class Image {
     @Id
@@ -32,14 +31,39 @@ public class Image {
     @Column(name="isShared")
     private Boolean isShared;
 
-    public Image(String path, String viewInfo, String resolution, Boolean isShared) {
+    @Column(name = "settings")
+    private String settings;
+
+    @Column(name = "description")
+    private String description;
+
+    @ManyToOne
+    private Frame frame;
+
+    @ManyToOne
+    private Page page;
+
+    @ManyToOne
+    private Print print;
+
+    @ManyToOne
+    private Client owner;
+
+    public Image() {
+    }
+
+    public Image(String path, String viewInfo, String resolution, Boolean isShared, String settings, String description,
+            Frame frame, Page page, Print print, Client owner) {
         this.path = path;
         this.viewInfo = viewInfo;
         this.resolution = resolution;
         this.isShared = isShared;
-    }
-
-    public Image() {
+        this.settings = settings;
+        this.description = description;
+        this.frame = frame;
+        this.page = page;
+        this.print = print;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -81,6 +105,56 @@ public class Image {
     public void setIsShared(Boolean isShared) {
         this.isShared = isShared;
     }
+
+    public String getSettings() {
+        return settings;
+    }
+
+    public void setSettings(String settings) {
+        this.settings = settings;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Frame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(Frame frame) {
+        this.frame = frame;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
+    public Print getPrint() {
+        return print;
+    }
+
+    public void setPrint(Print print) {
+        this.print = print;
+    }
+
+    public Client getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Client owner) {
+        this.owner = owner;
+    }
+    
+    
 
     //todo getters and setters after mapping 
 

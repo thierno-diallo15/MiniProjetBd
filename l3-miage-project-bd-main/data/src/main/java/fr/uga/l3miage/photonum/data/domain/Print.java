@@ -13,18 +13,18 @@ import jakarta.persistence.Table;
 public class Print extends Impression {
 
     @OneToMany(mappedBy = "print")
-    private List<Photo> photoPrints;
+    private List<Image> photoPrints;
 
-    public Print(Double price, Client person, Article article, Catalog formatQuality, List<Photo> photoPrints) {
-        super(price, person, article, formatQuality);
+    public Print(Double price, Client person, Article article, List<Image> photoPrints) {
+        super(price, person, article);
         this.photoPrints = photoPrints;
     }
 
-    public List<Photo> getPhotoPrints() {
+    public List<Image> getPhotoPrints() {
         return photoPrints;
     }
 
-    public void setPhotoPrints(List<Photo> photoPrints) {
+    public void setPhotoPrints(List<Image> photoPrints) {
         this.photoPrints = photoPrints;
     }
 

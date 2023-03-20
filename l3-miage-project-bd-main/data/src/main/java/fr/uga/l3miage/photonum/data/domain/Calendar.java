@@ -22,8 +22,8 @@ public class Calendar extends Impression {
     @OneToMany(mappedBy = "calendar")
     private Page[] pages = new Page[12];
 
-    public Calendar(Double price, Client person, Article article, Catalog formatQuality, Date year, Page[] pages) {
-        super(price, person, article, formatQuality);
+    public Calendar(Double price, Client person, Article article, Date year, Page[] pages) {
+        super(price, person, article);
         this.year = year;
         this.pages = pages;
     }

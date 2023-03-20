@@ -21,7 +21,7 @@ public class Page {
     private String layout;
 
     @OneToMany(mappedBy = "page")
-    private List<Photo> photoPages;
+    private List<Image> photoPages;
 
     @ManyToOne
     private Calendar calendar;
@@ -29,7 +29,7 @@ public class Page {
     @ManyToOne
     private Album album;
 
-    public Page(String layout, List<Photo> photoPages, Calendar calendar, Album album) {
+    public Page(String layout, List<Image> photoPages, Calendar calendar, Album album) {
         this.layout = layout;
         this.photoPages = photoPages;
         this.calendar = calendar;
@@ -52,11 +52,11 @@ public class Page {
         this.layout = layout;
     }
 
-    public List<Photo> getPhotoPages() {
+    public List<Image> getPhotoPages() {
         return photoPages;
     }
 
-    public void setPhotoPages(List<Photo> photoPages) {
+    public void setPhotoPages(List<Image> photoPages) {
         this.photoPages = photoPages;
     }
 

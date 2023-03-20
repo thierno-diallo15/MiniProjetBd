@@ -2,6 +2,7 @@ package fr.uga.l3miage.photonum.data.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -16,7 +17,10 @@ public class Article {
     @GeneratedValue
     private Long id;
     // Todo the mapping
-    
+    @Enumerated
+    @Column(name = "formatQuality", nullable = false)
+    private Catalog formatQuality;
+
     @Column(name = "quantity", nullable = false)
     private int quantity;
     
@@ -33,7 +37,8 @@ public class Article {
     public Article() {
     }
 
-    public Article(int quantity, Double price, Order order, Impression impression) {
+    public Article(Catalog formatQuality, int quantity, Double price, Order order, Impression impression) {
+        this.formatQuality = formatQuality;
         this.quantity = quantity;
         this.price = price;
         this.order = order;
@@ -46,6 +51,14 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Catalog getFormatQuality() {
+        return formatQuality;
+    }
+
+    public void setFormatQuality(Catalog formatQuality) {
+        this.formatQuality = formatQuality;
     }
 
     public int getQuantity() {
@@ -64,11 +77,11 @@ public class Article {
         this.price = price;
     }
 
-    public Order getorder() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setorder(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
@@ -79,5 +92,7 @@ public class Article {
     public void setImpression(Impression impression) {
         this.impression = impression;
     }
+
+    
 
 }
