@@ -32,6 +32,7 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<Article> articles;
+    
 
     public Order() {
     }

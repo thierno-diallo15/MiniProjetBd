@@ -5,15 +5,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "type_impression", discriminatorType = DiscriminatorType.STRING)
-@Table(name = "Impression")
 public abstract class Impression {
 
     @Id
     @GeneratedValue
     private Long id; // remplacer car String si besoin
     
-    @Column(name = "price", nullable = false)
+    @Column( nullable = false)
     private Double price;
 
     @ManyToOne

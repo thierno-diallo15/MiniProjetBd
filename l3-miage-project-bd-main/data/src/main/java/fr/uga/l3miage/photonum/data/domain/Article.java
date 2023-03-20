@@ -2,6 +2,7 @@ package fr.uga.l3miage.photonum.data.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,8 +18,7 @@ public class Article {
     @GeneratedValue
     private Long id;
     // Todo the mapping
-    @Enumerated
-    @Column(name = "formatQuality", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private Catalog formatQuality;
 
     @Column(name = "quantity", nullable = false)

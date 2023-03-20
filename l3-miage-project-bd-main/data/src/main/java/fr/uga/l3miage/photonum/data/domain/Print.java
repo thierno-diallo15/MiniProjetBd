@@ -8,11 +8,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Print")
-@DiscriminatorValue("Print")
 public class Print extends Impression {
 
-    @OneToMany(mappedBy = "print")
+    @OneToMany
     private List<Image> photoPrints;
 
     public Print(Double price, Client person, Article article, List<Image> photoPrints) {

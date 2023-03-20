@@ -1,7 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 public enum Catalog {
-
     MAT10x13,
     MAT30x30,
     MAT30x40,

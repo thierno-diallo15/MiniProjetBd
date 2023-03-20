@@ -9,8 +9,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Frame")
-@DiscriminatorValue("F")
 public class Frame extends Impression {
 
     @OneToMany(mappedBy = "frame")

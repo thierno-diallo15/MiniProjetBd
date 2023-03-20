@@ -1,10 +1,12 @@
 package fr.uga.l3miage.photonum.data.domain;
+import java.util.List;
 import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -27,6 +29,11 @@ public class Client {
 
     @ManyToMany
     private Set<Address> addresses;
+
+    //@OneToMany
+    //private List<Image> photos;
+
+    
 
     public Client(String email, String password, String firstName, String lastName, Set<Address> addresses) {
         this.email = email;

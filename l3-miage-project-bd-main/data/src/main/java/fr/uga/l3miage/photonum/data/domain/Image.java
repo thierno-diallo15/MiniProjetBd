@@ -1,40 +1,35 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name= "Image")
 public class Image {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name="path_image",nullable = false)
+    @Column
     private String path;
-    //todo à completer lors du mapping 
-    @Column(name ="viewInfo", nullable = false)
+    @Column
     private String viewInfo ;
 
-    @Column(name="resolution")
+    @Column
     private String resolution;
 
-    @Column(name="isShared")
+    @Column
     private Boolean isShared;
 
-    @Column(name = "settings")
+    @Column
     private String settings;
 
-    @Column(name = "description")
+    @Column
     private String description;
 
     @ManyToOne
@@ -49,10 +44,10 @@ public class Image {
     @ManyToOne
     private Client owner;
 
-    public Image() {
-    }
+    /*public Image() {
+    }*/
 
-    public Image(String path, String viewInfo, String resolution, Boolean isShared, String settings, String description,
+    /*public Image(String path, String viewInfo, String resolution, Boolean isShared, String settings, String description,
             Frame frame, Page page, Print print, Client owner) {
         this.path = path;
         this.viewInfo = viewInfo;
@@ -64,14 +59,10 @@ public class Image {
         this.page = page;
         this.print = print;
         this.owner = owner;
-    }
+    }*/
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPath() {
