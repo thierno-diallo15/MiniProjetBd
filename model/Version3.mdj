@@ -717,7 +717,7 @@
 											"top": 159,
 											"width": 111,
 											"height": 13,
-											"text": "Order"
+											"text": "Commande"
 										},
 										{
 											"_type": "LabelView",
@@ -3264,9 +3264,9 @@
 										"$ref": "AAAAAAGG28wnecS7ZPA="
 									},
 									"font": "Arial;13;0",
-									"left": 168,
+									"left": 151,
 									"top": 192,
-									"width": 65.01904296875,
+									"width": 98.9853515625,
 									"height": 13,
 									"alpha": 1.5707953267948966,
 									"distance": 10,
@@ -3274,7 +3274,7 @@
 										"$ref": "AAAAAAGG28wnecS/k+E="
 									},
 									"edgePosition": 1,
-									"text": "MakeOrder"
+									"text": "MakeCommande"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3402,7 +3402,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAGG28wnecS/k+E="
 									},
-									"text": "orders"
+									"text": "commandes"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3682,7 +3682,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAGG28+pYdgXngM="
 									},
-									"text": "order"
+									"text": "commande"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4269,16 +4269,16 @@
 										"$ref": "AAAAAAGG294fy+2ROPo="
 									},
 									"font": "Arial;13;0",
-									"left": 1545,
+									"left": 1538,
 									"top": 630,
-									"width": 7.22998046875,
+									"width": 21.68359375,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGG294fzO2TNFk="
 									},
-									"text": "1"
+									"text": "0..1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -4920,16 +4920,16 @@
 										"$ref": "AAAAAAGG2+PYqh1hgew="
 									},
 									"font": "Arial;13;0",
-									"left": 951,
+									"left": 944,
 									"top": 522,
-									"width": 7.22998046875,
+									"width": 21.68359375,
 									"height": 13,
 									"alpha": -0.5984191050441883,
 									"distance": 26.627053911388696,
 									"hostEdge": {
 										"$ref": "AAAAAAGG2+PYqh1jtks="
 									},
-									"text": "1"
+									"text": "0..1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -5195,16 +5195,17 @@
 									"model": {
 										"$ref": "AAAAAAGG2+RCGyq4rus="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1306,
+									"left": 1296,
 									"top": 798,
+									"width": 21.68359375,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGG2+RCGyq6jt0="
-									}
+									},
+									"text": "0..1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -6679,7 +6680,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGG23JfFxAHATk="
 							},
-							"name": "MakeOrder",
+							"name": "MakeCommande",
 							"end1": {
 								"_type": "UMLAssociationEnd",
 								"_id": "AAAAAAGG28wnecS8zGI=",
@@ -6698,7 +6699,7 @@
 								"_parent": {
 									"$ref": "AAAAAAGG28wnecS7ZPA="
 								},
-								"name": "orders",
+								"name": "commandes",
 								"reference": {
 									"$ref": "AAAAAAGG23hoCBFHFg8="
 								},
@@ -6919,7 +6920,7 @@
 									"$ref": "AAAAAAGG24gFXhLTqEU="
 								},
 								"aggregation": "composite",
-								"multiplicity": "1"
+								"multiplicity": "0..1"
 							}
 						},
 						{
@@ -6951,7 +6952,8 @@
 								"reference": {
 									"$ref": "AAAAAAGG24hZBBL9iDc="
 								},
-								"aggregation": "composite"
+								"aggregation": "composite",
+								"multiplicity": "0..1"
 							}
 						},
 						{
@@ -7016,7 +7018,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Order",
+					"name": "Commande",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -7080,7 +7082,7 @@
 								"_parent": {
 									"$ref": "AAAAAAGG28+pYNgTiYo="
 								},
-								"name": "order",
+								"name": "commande",
 								"reference": {
 									"$ref": "AAAAAAGG23hoCBFHFg8="
 								},
@@ -7513,7 +7515,7 @@
 									"$ref": "AAAAAAGG24Z11RJoxRM="
 								},
 								"aggregation": "composite",
-								"multiplicity": "1"
+								"multiplicity": "0..1"
 							}
 						},
 						{
@@ -8224,7 +8226,7 @@
 											"width": 111.5791015625,
 											"height": 13,
 											"underline": true,
-											"text": "o1: Order"
+											"text": "o1: Commande"
 										},
 										{
 											"_type": "LabelView",
