@@ -16,7 +16,7 @@ public class Article {
     @Id
     @GeneratedValue
     private Long id;
-    // Todo the mapping
+    
     @Enumerated
     @Column(name = "formatQuality", nullable = false)
     private Catalog formatQuality;
@@ -26,24 +26,13 @@ public class Article {
     
     @Column(name = "price", nullable = false)
     private Double price;
-    // Todo generate getters and setters afters the mapping
     
     @ManyToOne
-    private Order order;
+    private Commande commande;
     
     @OneToOne
     private Impression impression;
 
-    public Article() {
-    }
-
-    public Article(Catalog formatQuality, int quantity, Double price, Order order, Impression impression) {
-        this.formatQuality = formatQuality;
-        this.quantity = quantity;
-        this.price = price;
-        this.order = order;
-        this.impression = impression;
-    }
 
     public Long getId() {
         return id;
@@ -77,21 +66,6 @@ public class Article {
         this.price = price;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Impression getImpression() {
-        return impression;
-    }
-
-    public void setImpression(Impression impression) {
-        this.impression = impression;
-    }
 
     
 

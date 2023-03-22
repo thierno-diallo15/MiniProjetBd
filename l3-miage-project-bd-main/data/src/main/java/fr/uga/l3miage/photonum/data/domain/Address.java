@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import static jakarta.persistence.FetchType.EAGER;
+
 
 @Entity
 public class Address {
@@ -17,14 +19,10 @@ public class Address {
     @Column(nullable = false)
     private String description;
 
-    @ManyToMany(mappedBy = "addresses")
+    @ManyToMany(mappedBy = "addresses",fetch = EAGER)
     private Set<Client> clients;
 
-    public Address(String description, Set<Client> clients) {
-        this.description = description;
-        this.clients = clients;
-    }
-
+    
     public Long getId() {
         return id;
     }

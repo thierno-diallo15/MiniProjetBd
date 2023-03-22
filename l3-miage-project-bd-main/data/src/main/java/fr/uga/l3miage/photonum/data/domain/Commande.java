@@ -3,45 +3,29 @@ package fr.uga.l3miage.photonum.data.domain;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Internal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Order")
-public class Order {
+public class Commande {
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(name = "order_date", nullable = false)
     private Date date;
-    // todo the mapping
     @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
     @ManyToOne
     private Client client;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "commande")
     private List<Article> articles;
-
-    public Order() {
-    }
-
-    public Order(Date date, Double totalPrice, Client client, List<Article> articles) {
-        this.date = date;
-        this.totalPrice = totalPrice;
-        this.client = client;
-        this.articles = articles;
-    }
 
     public Long getId() {
         return id;
@@ -83,5 +67,4 @@ public class Order {
         this.articles = articles;
     }
 
-    // todo generate getters and setters after mapping
 }

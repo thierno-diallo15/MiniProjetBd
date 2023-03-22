@@ -20,21 +20,14 @@ public class Page {
     @Column(name="layout", nullable = false)
     private String layout;
 
-    @OneToMany(mappedBy = "page")
-    private List<Image> photoPages;
-
     @ManyToOne
     private Calendar calendar;
 
     @ManyToOne
     private Album album;
 
-    public Page(String layout, List<Image> photoPages, Calendar calendar, Album album) {
-        this.layout = layout;
-        this.photoPages = photoPages;
-        this.calendar = calendar;
-        this.album = album;
-    }
+    @OneToMany(mappedBy = "page")
+    private List<Image> photoPages;
 
     public Long getId() {
         return id;
@@ -51,15 +44,6 @@ public class Page {
     public void setLayout(String layout) {
         this.layout = layout;
     }
-
-    public List<Image> getPhotoPages() {
-        return photoPages;
-    }
-
-    public void setPhotoPages(List<Image> photoPages) {
-        this.photoPages = photoPages;
-    }
-
     public Calendar getCalendar() {
         return calendar;
     }
@@ -67,7 +51,6 @@ public class Page {
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
-
     public Album getAlbum() {
         return album;
     }

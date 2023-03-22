@@ -12,21 +12,13 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="Calendar")
-@DiscriminatorValue("C")
 public class Calendar extends Impression {
-    //todo the mapping 
-    @Column(name = "year",nullable = false)
+    @Column(name = "annee",nullable = false)
     @Temporal(TemporalType.DATE)
     private Date year;
 
     @OneToMany(mappedBy = "calendar")
     private Page[] pages = new Page[12];
-
-    public Calendar(Double price, Client person, Article article, Date year, Page[] pages) {
-        super(price, person, article);
-        this.year = year;
-        this.pages = pages;
-    }
 
     public Date getyear() {
         return year;

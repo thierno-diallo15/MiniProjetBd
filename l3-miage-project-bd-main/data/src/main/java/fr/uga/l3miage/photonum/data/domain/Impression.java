@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "type_impression", discriminatorType = DiscriminatorType.STRING)
-@Table(name = "Impression")
 public abstract class Impression {
-
     @Id
     @GeneratedValue
     private Long id; // remplacer car String si besoin
@@ -22,24 +19,12 @@ public abstract class Impression {
     @OneToOne
     private Article article;
 
-    public Impression(Double price, Client person, Article article) {
-        this.price = price;
-        this.person = person;
-        this.article = article;
-    }
-
-    public Impression(){
-        
-    }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public Double getPrice() {
         return price;
     }
@@ -64,5 +49,4 @@ public abstract class Impression {
         this.article = article;
     }
 
-    // todo Generate getters and the setters after mapping
 }

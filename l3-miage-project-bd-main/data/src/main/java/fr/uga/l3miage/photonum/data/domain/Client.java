@@ -1,10 +1,14 @@
 package fr.uga.l3miage.photonum.data.domain;
+import java.util.List;
 import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -25,16 +29,17 @@ public class Client {
     @Column
     private String lastName;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "client")
+    private List<Commande> commandes;
+
+    @OneToMany(mappedBy = "person")
+    private List<Impression> impressions;
+
+    @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Set<Address> addresses;
 
-    public Client(String email, String password, String firstName, String lastName, Set<Address> addresses) {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.addresses = addresses;
-    }
+    @OneToMany(mappedBy = "owner")
+    private List<Image> photos;
 
     public Long getId() {
         return id;
