@@ -1,5 +1,7 @@
 package fr.uga.l3miage.photonum.data.domain;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -66,7 +68,29 @@ public class Article {
         this.price = price;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Article article))
+            return false;
+        return  formatQuality == article.formatQuality
+            && Objects.equals(quantity, article.quantity)
+            && Objects.equals(price, article.price)
+            && Objects.equals(commande, article.commande)
+            && Objects.equals(impression, article.impression);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(formatQuality,quantity,price,commande,impression);
+    }
+
+
+
+}
+
 
     
 
-}
+

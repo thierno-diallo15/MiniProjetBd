@@ -1,5 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -13,25 +14,36 @@ public class Album extends Impression {
 
     @Column(name = "title", nullable = false)
     private String title;
-
     @OneToMany
     private Set<Page> pageAlbums;
-
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
     public Set<Page> getPageAlbums() {
         return pageAlbums;
     }
-
     public void setPageAlbums(Set<Page> pageAlbums) {
         this.pageAlbums = pageAlbums;
     }
 
-    // TODO generete getters and setters after the mapping
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(!(o instanceof Album album)) return false;
+        if(!super.equals(o)) return false;
+       return  Objects.equals(title, album.title)
+            && Objects.equals(pageAlbums, album.pageAlbums);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(title,pageAlbums);
+    }
+    
+
+    
+    
 }

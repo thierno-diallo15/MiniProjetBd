@@ -1,5 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -42,7 +43,19 @@ public class Address {
     public void setClients(Set<Client> clients) {
         this.clients = clients;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(description, address.description)
+            && Objects.equals(clients, address.clients);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(description,clients);
+    }
     
     
 

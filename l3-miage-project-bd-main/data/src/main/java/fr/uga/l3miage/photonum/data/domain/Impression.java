@@ -1,5 +1,7 @@
 package fr.uga.l3miage.photonum.data.domain;
 
+import java.util.Objects;
+
 import jakarta.persistence.*;
 
 
@@ -47,6 +49,16 @@ public abstract class Impression {
 
     public void setArticle(Article article) {
         this.article = article;
+    }
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(!(o instanceof Impression impression)) return false;
+        return Objects.equals(price , impression.price)
+            && Objects.equals(person, impression.person)
+            && Objects.equals(article, impression.article);
+    }
+    public int hashCode(){
+        return Objects.hash(price, person, article);
     }
 
 }
