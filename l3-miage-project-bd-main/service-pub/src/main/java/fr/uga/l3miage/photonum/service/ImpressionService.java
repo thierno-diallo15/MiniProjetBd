@@ -9,5 +9,4 @@ public interface ImpressionService extends BaseService<Impression, Long> {
 
     Impression save(Impression impression);
 
-
 }

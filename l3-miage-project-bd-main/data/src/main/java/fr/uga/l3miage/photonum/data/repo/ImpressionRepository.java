@@ -24,12 +24,10 @@ public class ImpressionRepository implements CRUDRepository<Long, Impression> {
         return entityManager.find(Impression.class, id);
     }
 
-
     @Override
     public void delete(Impression impression) {
         entityManager.remove(impression);
     }
-
 
     @Override
     public List<Impression> all() {
