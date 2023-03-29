@@ -17,7 +17,7 @@ import static jakarta.persistence.FetchType.EAGER;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue   //TO DO: definir une strategie d'auto generation
     private Long id;
 
     @Column(nullable = false)

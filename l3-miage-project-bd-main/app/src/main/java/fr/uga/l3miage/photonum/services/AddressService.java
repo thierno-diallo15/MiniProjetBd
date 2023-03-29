@@ -10,12 +10,17 @@ import org.springframework.stereotype.Service;
 import fr.uga.l3miage.photonum.domain.DTO.AddressDTO;
 import fr.uga.l3miage.photonum.domain.mapper.AddressMapper;
 import fr.uga.l3miage.photonum.domain.model.Address;
+import fr.uga.l3miage.photonum.domain.model.Client;
 import fr.uga.l3miage.photonum.repository.AddressRepository;
+import fr.uga.l3miage.photonum.repository.ClientRepository;
 
 @Service
 public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     private AddressMapper addressMapper = Mappers.getMapper(AddressMapper.class);
     
@@ -39,4 +44,21 @@ public class AddressService {
         addressDTO.setClientId(address.getClient().getId());
         return (addressDTO);
     }
+
+    public AddressDTO save(AddressDTO addressDTO){
+        //convertir l'objet DTO -> l'objet Adresse
+        Address address = addressMapper.DTOToEntity(addressDTO);
+        Client client = clientRepository.get(addressDTO.getClientId());
+        //Mappeur non capable de convertir (Long) client_id -> l'objet Client
+        //  -> on le fait manuellement 
+        address.setClient(client);
+
+        Address saved = addressRepository.save(address);
+        AddressDTO savedDTO = addressMapper.entityToDTO(saved);
+        //convertir manuellement l'objet Client -> (Long) client_id pour DTO
+        savedDTO.setClientId(saved.getClient().getId());
+        return  savedDTO;
+    }
 }
+
+
