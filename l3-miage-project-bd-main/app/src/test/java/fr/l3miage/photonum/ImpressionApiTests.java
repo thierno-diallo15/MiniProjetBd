@@ -1,7 +1,8 @@
 package fr.l3miage.photonum;
 
 import fr.uga.l3miage.photonum.PhotoNumApplication;
-import fr.uga.l3miage.photonum.impression.ImpressionDTO;
+import fr.uga.l3miage.photonum.domain.DTO.ImpressionDTO;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
