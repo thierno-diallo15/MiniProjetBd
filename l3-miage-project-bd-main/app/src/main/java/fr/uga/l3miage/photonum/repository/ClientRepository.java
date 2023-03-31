@@ -40,4 +40,7 @@ public class ClientRepository implements CRUDRepository<Long, Client> {
         return null;
     }
 
+    public Client update(Client client){
+        return entityManager.merge(client);
+    }
 }

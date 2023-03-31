@@ -1,23 +1,20 @@
 package fr.uga.l3miage.photonum.domain.model;
 
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
-import static jakarta.persistence.FetchType.EAGER;
 
 
 @Entity
 public class Address {
     @Id
-    @GeneratedValue   //TO DO: definir une strategie d'auto generation
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)

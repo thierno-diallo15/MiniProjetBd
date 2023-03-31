@@ -42,4 +42,9 @@ public class ClientService {
        return clientRepository.save(nClient);
 
     }
+
+    public ClientDTO update(Client client){
+        Client updated = clientRepository.update(client);
+        return clientMapper.entityToDTO(updated);
+    }
 }
