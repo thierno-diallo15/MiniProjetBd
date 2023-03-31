@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,5 +45,20 @@ public class CommandeController {
             return new ResponseEntity<>(saved, HttpStatus.CREATED);
         } 
     }
+
+    @PutMapping(value = "/{id}")
+    @Transactional
+    public ResponseEntity<CommandeDTO> update(@PathVariable Long id ,@RequestBody CommandeDTO commandeDto) throws ServerException{
+        if (commandeService.getById(id) == null){
+            throw new ServerException("Commamnde" +id + " n'existe pas!");
+        }
+        CommandeDTO updated = commandeService.update(commandeDto);
+        if (updated == null){
+            throw new ServerException("Echec de modification du compte!");
+        }
+        else{
+            return new ResponseEntity<>(updated, HttpStatus.CREATED);
+        } 
+    } 
 
 }

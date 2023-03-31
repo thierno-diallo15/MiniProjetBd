@@ -4,11 +4,11 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,21 +19,18 @@ public class Article {
     @GeneratedValue
     private Long id;
     
-    @Enumerated
-    @Column(name = "formatQuality", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    @Column(nullable = false)
     private Catalog formatQuality;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(nullable = false)
     private int quantity;
     
-    @Column(name = "price", nullable = false)
+    @Column(nullable = false)
     private Double price;
     
     @ManyToOne
     private Commande commande;
-    
-    @OneToOne
-    private Impression impression;
 
 
     public Long getId() {
@@ -68,6 +65,14 @@ public class Article {
         this.price = price;
     }
 
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -77,15 +82,13 @@ public class Article {
         return  formatQuality == article.formatQuality
             && Objects.equals(quantity, article.quantity)
             && Objects.equals(price, article.price)
-            && Objects.equals(commande, article.commande)
-            && Objects.equals(impression, article.impression);
+            && Objects.equals(commande, article.commande);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(formatQuality,quantity,price,commande,impression);
+        return Objects.hash(formatQuality,quantity,price,commande);
     }
-
 
 
 }

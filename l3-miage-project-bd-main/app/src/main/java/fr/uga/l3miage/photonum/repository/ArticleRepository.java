@@ -14,6 +14,10 @@ public class ArticleRepository implements CRUDRepository<Long, Article>{
     @PersistenceContext
     private EntityManager entityManager;
 
+    public List<Article> findAll(){
+        return entityManager.createQuery("from Article").getResultList();
+    }
+
     @Override
     public Article  save(Article article) {
         entityManager.persist(article);

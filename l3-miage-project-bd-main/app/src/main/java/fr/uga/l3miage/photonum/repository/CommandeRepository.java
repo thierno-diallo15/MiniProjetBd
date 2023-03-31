@@ -20,6 +20,10 @@ public class CommandeRepository implements CRUDRepository<Long, Commande> {
         return commande;
     }
 
+    public Commande update(Commande commande){
+        return entityManager.merge(commande);
+    }
+
     public List<Commande> findAll(){
         return entityManager.createQuery("from Commande").getResultList();
     }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.uga.l3miage.photonum.domain.DTO.AddressDTO;
+import fr.uga.l3miage.photonum.domain.model.Address;
 import fr.uga.l3miage.photonum.services.AddressService;
 
 @RestController

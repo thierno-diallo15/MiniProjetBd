@@ -18,7 +18,7 @@ public abstract class Impression {
     @ManyToOne
     private Client person;
 
-    @OneToOne
+    @OneToOne(optional = true)
     private Article article;
 
     public Long getId() {

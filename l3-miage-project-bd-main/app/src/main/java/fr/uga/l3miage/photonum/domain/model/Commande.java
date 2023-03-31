@@ -25,8 +25,6 @@ public class Commande {
     @ManyToOne
     private Client client;
 
-    @OneToMany(mappedBy = "commande")
-    private List<Article> articles;
     public Long getId() {
         return id;
     }
@@ -51,23 +49,16 @@ public class Commande {
     public void setClient(Client client) {
         this.client = client;
     }
-    public List<Article> getArticles() {
-        return articles;
-    }
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
 
     public boolean equals(Object o){
         if(o == null) return false;
         if(!(o instanceof Commande commande)) return false;
         return Objects.equals(date, commande.date)
             && Objects.equals(totalPrice, commande.totalPrice)
-            && Objects.equals(articles, commande.articles)
             && Objects.equals(client, commande.client);
     }
     public int hashCode(){
-        return Objects.hash(date, totalPrice, articles, client);
+        return Objects.hash(date, totalPrice, client);
     }
 
 }

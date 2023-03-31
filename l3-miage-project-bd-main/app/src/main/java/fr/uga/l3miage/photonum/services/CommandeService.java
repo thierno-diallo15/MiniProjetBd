@@ -59,7 +59,20 @@ public class CommandeService {
         return  savedDTO;
     }
 
+    public CommandeDTO update(CommandeDTO commandeDTO){
+        //convertir l'objet DTO -> l'objet Adresse
+        Commande commande = commandeMapper.DTOToEntity(commandeDTO);
+        Client client = clientRepository.get(commandeDTO.getClientId());
+        //Mappeur non capable de convertir (Long) client_id -> l'objet Client
+        //  -> on le fait manuellement 
+        commande.setClient(client);
 
+        Commande saved = commandeRepository.update(commande);
+        CommandeDTO savedDTO = commandeMapper.entityToDTO(saved);
+        //convertir manuellement l'objet Client -> (Long) client_id pour DTO
+        savedDTO.setClientId(saved.getClient().getId());
+        return  savedDTO;
+   } 
 
     
 }
