@@ -39,6 +39,14 @@ public class ClientController {
         return clientService.getById(id);
     }
 
+    @PutMapping(value = "/{id}")
+    @Transactional
+    public ResponseEntity<Client> updateClient(@PathVariable("id") Long id , @RequestBody Client client){
+      client.setId(id);
+      Client saved = clientService.save(client);
+      return new ResponseEntity<Client>(saved,HttpStatus.OK);
+    }
+
     @PostMapping
     @Transactional
     public ResponseEntity<ClientDTO> create(@RequestBody Client newClient) throws ServerException{
