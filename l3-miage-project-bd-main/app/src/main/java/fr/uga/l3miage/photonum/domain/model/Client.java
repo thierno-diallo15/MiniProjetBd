@@ -1,22 +1,17 @@
 package fr.uga.l3miage.photonum.domain.model;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 
 
 @Entity
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column( nullable = false)
@@ -30,19 +25,6 @@ public class Client {
 
     @Column
     private String lastName;
-
-    @OneToMany(mappedBy = "client")
-    private List<Commande> commandes;
-
-    @OneToMany(mappedBy = "person")
-    private List<Impression> impressions;
-
-    // @OneToMany(cascade = {CascadeType.REMOVE},    //, CascadeType.PERSIST}, 
-    //             mappedBy = "client", fetch = FetchType.EAGER)
-    // private Set<Address> addresses;
-
-    @OneToMany(mappedBy = "owner")
-    private List<Image> photos;
 
     public Long getId() {
         return id;
@@ -78,12 +60,10 @@ public class Client {
         return Objects.equals(email, client.email)
             && Objects.equals(password, client.password)
             && Objects.equals(firstName, client.firstName)
-            && Objects.equals(lastName, client.lastName)
-            && Objects.equals(commandes, client.commandes)
-            && Objects.equals(photos, client.photos);
+            && Objects.equals(lastName, client.lastName) ;
     }
     public int hashCode(){
-        return Objects.hash(email, password, firstName, lastName, commandes, photos);
+        return Objects.hash(email, password, firstName, lastName);
     }
 
 }

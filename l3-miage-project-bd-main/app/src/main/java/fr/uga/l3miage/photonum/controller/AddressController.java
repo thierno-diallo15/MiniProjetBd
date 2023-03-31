@@ -39,7 +39,7 @@ public class AddressController {
     public ResponseEntity<AddressDTO> create(@RequestBody AddressDTO addressDTO) throws ServerException{
         AddressDTO saved = addressService.save(addressDTO);
         if (saved == null){
-            throw new ServerException("Echec de creation du compte!");
+            throw new ServerException("Echec de creation de l'adresse!");
         }
         else{
             return new ResponseEntity<>(saved, HttpStatus.CREATED);
