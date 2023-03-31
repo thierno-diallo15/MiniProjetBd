@@ -28,10 +28,13 @@ public class ClientService {
         return new ArrayList<>(clientMapper.entityToDTO(clients));
     }
 
-    public ClientDTO save(Client client){
-        //Client newClient
-        //Client saved = clientRepository.save(newClient);
-        //return clientMapper.entityToDTO(saved);
-        return null;
+    public ClientDTO save(Client newClient){
+        Client saved = clientRepository.save(newClient);
+        return clientMapper.entityToDTO(saved);
+    }
+
+    public ClientDTO update(Client client){
+        Client updated = clientRepository.update(client);
+        return clientMapper.entityToDTO(updated);
     }
 }

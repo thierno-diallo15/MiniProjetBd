@@ -58,12 +58,12 @@ public class ClientController {
             throw new ServerException("Client " +id + " n'existe pas!");
         }
         
-        ClientDTO saved = clientService.save(client);
-        if (saved == null){
+        ClientDTO updated = clientService.update(client);
+        if (updated == null){
             throw new ServerException("Echec de modification du compte!");
         }
         else{
-            return new ResponseEntity<>(saved, HttpStatus.CREATED);
+            return new ResponseEntity<>(updated, HttpStatus.CREATED);
         } 
     }
 
