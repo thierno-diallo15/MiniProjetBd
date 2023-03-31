@@ -24,7 +24,7 @@ public class AddressService {
 
     private AddressMapper addressMapper = Mappers.getMapper(AddressMapper.class);
     
-    //to do: remplacer clientId par ClientDTO pour meilleure affichage 
+    //to do: remplacer clientId par ClientDTO pour meilleure affichage
     public List<AddressDTO> getAll(){
         List<AddressDTO> addressesDTO = new ArrayList<>();
         List<Address> addresses = addressRepository.findAll();

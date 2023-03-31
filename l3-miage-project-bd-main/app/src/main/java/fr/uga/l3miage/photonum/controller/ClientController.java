@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,9 +36,18 @@ public class ClientController {
         return clientService.getById(id);
     }
 
+    @PutMapping(value = "/{id}")
+    @Transactional
+    public ResponseEntity<Client> updateClient(@PathVariable("id") Long id , @RequestBody Client client){
+      client.setId(id);
+      Client saved = clientService.save(client);
+      return new ResponseEntity<Client>(saved,HttpStatus.OK);
+    }
+
     @PostMapping
-    public ResponseEntity<ClientDTO> create(@RequestBody Client newClient) throws ServerException{
-        ClientDTO saved = clientService.save(newClient);
+    @Transactional
+    public ResponseEntity<Client> create(@RequestBody Client newClient) throws ServerException{
+        Client saved = clientService.save(newClient);
         if (saved == null){
             throw new ServerException("Echec de creation du compte!");
         }
