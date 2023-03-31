@@ -8,6 +8,7 @@ public class PhotoNumApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PhotoNumApplication.class, args);
+        System.out.println("-------PHOTONUM - BACK END STARTED------");
     }
 
 }
