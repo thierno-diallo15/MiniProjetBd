@@ -28,19 +28,9 @@ public class ClientService {
         return new ArrayList<>(clientMapper.entityToDTO(clients));
     }
 
-    public Client save(Client nClient){
-        //convertir l'objet DTO -> l'objet Adresse
-       // Client client = clientMapper.DTOToEntity(clientDTO);
-        //Mappeur non capable de convertir (Long) client_id -> l'objet Client
-        //  -> on le fait manuellement 
+    public ClientDTO save(Client nClient){
         Client saved = clientRepository.save(nClient);
-       // ClientDTO savedDTO = clientMapper.entityToDTO(saved);
-        return  saved;
-    }
-    // a verifier après 
-    public Client update(Client nClient){
-       return clientRepository.save(nClient);
-
+        return  clientMapper.entityToDTO(saved);
     }
 
     public ClientDTO update(Client client){
