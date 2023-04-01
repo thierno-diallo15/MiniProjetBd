@@ -15,7 +15,7 @@ public class Frame extends Impression {
     @Column(name = "layout")
     private String layout;
     
-    @OneToMany(mappedBy = "frame")
+    @OneToMany
     private List<Image> photoFrames;
 
     public String getLayout() {

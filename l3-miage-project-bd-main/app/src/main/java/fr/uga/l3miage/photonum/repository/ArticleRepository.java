@@ -38,5 +38,7 @@ public class ArticleRepository implements CRUDRepository<Long, Article>{
         return null;
     }
 
-    
+    public Article update(Article article){
+        return entityManager.merge(article);
+    }    
 }

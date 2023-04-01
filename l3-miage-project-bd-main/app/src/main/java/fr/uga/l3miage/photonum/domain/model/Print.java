@@ -9,7 +9,7 @@ import jakarta.persistence.OneToMany;
 public class Print extends Impression {
 
 
-    @OneToMany(mappedBy = "print")
+    @OneToMany
     private List<Image> photoPrints;
 
     public List<Image> getPhotoPrints() {

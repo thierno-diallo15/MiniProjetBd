@@ -27,7 +27,7 @@ public class Page {
     @ManyToOne
     private Album album;
 
-    @OneToMany(mappedBy = "page")
+    @OneToMany
     private List<Image> photoPages;
 
     public Long getId() {

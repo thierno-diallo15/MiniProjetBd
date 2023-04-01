@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import fr.uga.l3miage.photonum.domain.DTO.ArticleDTO;
 import fr.uga.l3miage.photonum.domain.mapper.ArticleMapper;
 import fr.uga.l3miage.photonum.domain.model.Article;
+import fr.uga.l3miage.photonum.domain.model.Commande;
 import fr.uga.l3miage.photonum.repository.ArticleRepository;
 import fr.uga.l3miage.photonum.repository.CommandeRepository;
 
@@ -23,8 +24,8 @@ public class ArticleService {
     private CommandeRepository commandeRepository;
 
     private ArticleMapper articleMapper = Mappers.getMapper(ArticleMapper.class);
-    
-    //to do: remplacer clientId par ClientDTO pour meilleure affichage
+
+
     public List<ArticleDTO> getAll(){
         List<Article> articles = articleRepository.findAll();
         return new ArrayList<>(articleMapper.entityToDTO(articles)) ;
@@ -32,23 +33,26 @@ public class ArticleService {
 
     public ArticleDTO getById(Long id){
         Article article = articleRepository.get(id);
-        ArticleDTO articleDTO = articleMapper.entityToDTO(article);
-        articleDTO.setCommandeId(article.getCommande().getId());
-        return (articleDTO);
+        return articleMapper.entityToDTO(article);
     }
 
-    // public AddressDTO save(AddressDTO addressDTO){
-    //     //convertir l'objet DTO -> l'objet Adresse
-    //     Address address = addressMapper.DTOToEntity(addressDTO);
-    //     Client client = clientRepository.get(addressDTO.getClientId());
-    //     //Mappeur non capable de convertir (Long) client_id -> l'objet Client
-    //     //  -> on le fait manuellement 
-    //     address.setClient(client);
+    public ArticleDTO save(ArticleDTO ArticleDTO){
+        //convertir l'objet DTO -> l'objet Adresse
+        Article article = articleMapper.DTOToEntity(ArticleDTO);
+        Commande commande = commandeRepository.get(ArticleDTO.getCommandeId());
+        article.setCommande(commande);
 
-    //     Address saved = addressRepository.save(address);
-    //     AddressDTO savedDTO = addressMapper.entityToDTO(saved);
-    //     //convertir manuellement l'objet Client -> (Long) client_id pour DTO
-    //     savedDTO.setClientId(saved.getClient().getId());
-    //     return  savedDTO;
-    // }
+        Article saved = articleRepository.save(article);
+        return  articleMapper.entityToDTO(saved);
+    }
+
+    public ArticleDTO update(ArticleDTO articleDTO){
+        //convertir ArticleDTO -> Article 
+        Article article = articleMapper.DTOToEntity(articleDTO);
+        article.setCommande(commandeRepository.get(articleDTO.getCommandeId()));
+        //to do: controle le cas ID n'existe pas
+
+        Article updated = articleRepository.update(article);
+        return articleMapper.entityToDTO(updated);
+    }
 }

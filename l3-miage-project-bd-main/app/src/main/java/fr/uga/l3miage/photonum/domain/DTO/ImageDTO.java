@@ -3,32 +3,25 @@ package fr.uga.l3miage.photonum.domain.DTO;
 public class ImageDTO {
     private Long id;
     private String description;
-    private Boolean is_shared;
+    private Boolean isShared;
     private String path;
     private String resolution;
     private String setting;
-    private String view_info;
-    private Long frame_id;
-    private Long owner_id;
-    private Long page_id;
-    private Long print_id;
+    private String viewInfo;
+    private Long ownerId;
 
     public ImageDTO() {
     }
 
-    public ImageDTO(Long id, String description, Boolean is_shared, String path, String resolution, String setting,
-            String view_info, Long frame_id, Long owner_id, Long page_id, Long print_id) {
-        this.id = id;
+    public ImageDTO(String description, Boolean isShared, String path, String resolution, String setting,
+            String viewInfo, Long ownerId) {
         this.description = description;
-        this.is_shared = is_shared;
+        this.isShared = isShared;
         this.path = path;
         this.resolution = resolution;
         this.setting = setting;
-        this.view_info = view_info;
-        this.frame_id = frame_id;
-        this.owner_id = owner_id;
-        this.page_id = page_id;
-        this.print_id = print_id;
+        this.viewInfo = viewInfo;
+        this.ownerId = ownerId;
     }
 
     public Long getId() {
@@ -47,12 +40,12 @@ public class ImageDTO {
         this.description = description;
     }
 
-    public Boolean getIs_shared() {
-        return is_shared;
+    public Boolean getIsShared() {
+        return isShared;
     }
 
-    public void setIs_shared(Boolean is_shared) {
-        this.is_shared = is_shared;
+    public void setIsShared(Boolean isShared) {
+        this.isShared = isShared;
     }
 
     public String getPath() {
@@ -79,44 +72,20 @@ public class ImageDTO {
         this.setting = setting;
     }
 
-    public String getView_info() {
-        return view_info;
+    public String getViewInfo() {
+        return viewInfo;
     }
 
-    public void setView_info(String view_info) {
-        this.view_info = view_info;
+    public void setViewInfo(String viewInfo) {
+        this.viewInfo = viewInfo;
     }
 
-    public Long getFrame_id() {
-        return frame_id;
+    public Long getOwnerId() {
+        return ownerId;
     }
 
-    public void setFrame_id(Long frame_id) {
-        this.frame_id = frame_id;
-    }
-
-    public Long getOwner_id() {
-        return owner_id;
-    }
-
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
-    }
-
-    public Long getPage_id() {
-        return page_id;
-    }
-
-    public void setPage_id(Long page_id) {
-        this.page_id = page_id;
-    }
-
-    public Long getPrint_id() {
-        return print_id;
-    }
-
-    public void setPrint_id(Long print_id) {
-        this.print_id = print_id;
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
 }

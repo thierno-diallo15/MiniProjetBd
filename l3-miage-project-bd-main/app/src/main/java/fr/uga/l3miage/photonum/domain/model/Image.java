@@ -5,15 +5,16 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Image {
 
-   @Id
-    @GeneratedValue
-    private Long Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column
     private String path;
@@ -36,14 +37,22 @@ public class Image {
     @ManyToOne
     private Client owner;
 
-    @ManyToOne
-    private Page page;
+    // @ManyToOne
+    // private Page page;
 
-    @ManyToOne
-    private Frame frame;
+    // @ManyToOne
+    // private Frame frame;
 
-    @ManyToOne
-    private Print print;
+    // @ManyToOne
+    // private Print print;
+
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getPath() {
         return path;
@@ -101,29 +110,29 @@ public class Image {
         this.owner = owner;
     }
 
-    public Page getPage() {
-        return page;
-    }
+    // public Page getPage() {
+    //     return page;
+    // }
 
-    public void setPage(Page page) {
-        this.page = page;
-    }
+    // public void setPage(Page page) {
+    //     this.page = page;
+    // }
 
-    public Frame getFrame() {
-        return frame;
-    }
+    // public Frame getFrame() {
+    //     return frame;
+    // }
 
-    public void setFrame(Frame frame) {
-        this.frame = frame;
-    }
+    // public void setFrame(Frame frame) {
+    //     this.frame = frame;
+    // }
 
-    public Print getPrint() {
-        return print;
-    }
+    // public Print getPrint() {
+    //     return print;
+    // }
 
-    public void setPrint(Print print) {
-        this.print = print;
-    }
+    // public void setPrint(Print print) {
+    //     this.print = print;
+    // }
     public boolean equals(Object o){
         if(o == null) return false;
         if(!(o instanceof Image image)) return false;
@@ -132,16 +141,14 @@ public class Image {
             && Objects.equals(isShared, image.isShared)
             && Objects.equals(setting, image.setting)
             && Objects.equals(description, image.description)
-            && Objects.equals(owner, image.owner)
-            && Objects.equals(page, image.page)
-            && Objects.equals(frame, image.frame)
-            && Objects.equals(print, image.print);
+            && Objects.equals(owner, image.owner);
+            // && Objects.equals(page, image.page)
+            // && Objects.equals(frame, image.frame)
+            // && Objects.equals(print, image.print);
     }
 
-public int hashCode(){
-    return Objects.hash(path, resolution, isShared, setting, description, owner, page, frame, print);
-}
-
-
+    public int hashCode(){
+        return Objects.hash(path, resolution, isShared, setting, description, owner);  //, page, frame, print);
+    }
 
 }
