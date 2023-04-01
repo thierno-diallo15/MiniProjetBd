@@ -40,4 +40,8 @@ public class AddressRepository implements CRUDRepository<Long, Address> {
         return null;
     }
 
+    public Address update(Address address){
+        return entityManager.merge(address);
+    }
+
 }

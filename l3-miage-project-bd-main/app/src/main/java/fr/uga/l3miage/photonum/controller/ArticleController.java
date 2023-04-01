@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,10 +23,10 @@ public class ArticleController {
         return articleService.getAll();
     }
 
-    // @GetMapping(value = "/{id}")
-    // public AddressDTO findById(@PathVariable("id") Long id){    
-    //     return addressService.getById(id);
-    // }
+    @GetMapping(value = "/{id}")
+    public ArticleDTO findById(@PathVariable("id") Long id){    
+        return articleService.getById(id);
+    }
 
     // @PostMapping
     // @Transactional

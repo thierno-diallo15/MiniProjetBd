@@ -63,11 +63,11 @@
             <version>2.1.210</version>
             <scope>test</scope>
         </dependency> -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>19.3.0.0</version>
-        </dependency> 
+        </dependency>  -->
 
     </dependencies>
 

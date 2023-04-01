@@ -19,7 +19,7 @@ public class Article {
     @GeneratedValue
     private Long id;
     
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Catalog formatQuality;
 

@@ -26,23 +26,14 @@ public class AddressService {
     
     //to do: remplacer clientId par ClientDTO pour meilleure affichage
     public List<AddressDTO> getAll(){
-        List<AddressDTO> addressesDTO = new ArrayList<>();
         List<Address> addresses = addressRepository.findAll();
-        AddressDTO addressDTO = new AddressDTO();
-        
-        for (Address addr: addresses){
-            addressDTO = addressMapper.entityToDTO(addr);
-            addressDTO.setClientId(addr.getClient().getId());
-            addressesDTO.add(addressDTO);
-        }
-        return addressesDTO;
+        //convertir les Address -> AddressDTO avant de renvoyer
+        return new ArrayList<>(addressMapper.entityToDTO(addresses)) ;
     }
 
     public AddressDTO getById(Long id){
         Address address = addressRepository.get(id);
-        AddressDTO addressDTO = addressMapper.entityToDTO(address);
-        addressDTO.setClientId(address.getClient().getId());
-        return (addressDTO);
+        return addressMapper.entityToDTO(address);
     }
 
     public AddressDTO save(AddressDTO addressDTO){
@@ -54,10 +45,17 @@ public class AddressService {
         address.setClient(client);
 
         Address saved = addressRepository.save(address);
-        AddressDTO savedDTO = addressMapper.entityToDTO(saved);
-        //convertir manuellement l'objet Client -> (Long) client_id pour DTO
-        savedDTO.setClientId(saved.getClient().getId());
-        return  savedDTO;
+        return  addressMapper.entityToDTO(saved);
+    }
+
+    public AddressDTO update(AddressDTO addressDTO){
+        //convertir AddressDTO -> Address 
+        Address address = addressMapper.DTOToEntity(addressDTO);
+        address.setClient(clientRepository.get(addressDTO.getClientId()));
+        //to do: controle le cas ID n'existe pas
+
+        Address updated = addressRepository.update(address);
+        return addressMapper.entityToDTO(updated);
     }
 }
 
