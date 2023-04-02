@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
@@ -15,15 +17,20 @@ public class Client {
     private Long id;
 
     @Column( nullable = false)
+    @NotBlank (message = "email is requierd ")
+   @Email(message = "email not valid")
     private String email;
 
     @Column( nullable = false)
+    @NotBlank(message = "password is requierd")
     private String password;
 
     @Column( nullable = false)
+    @NotBlank(message = "firstName is requierd")
     private String firstName;
 
     @Column
+    @NotBlank(message = "lastName is requierd")
     private String lastName;
 
     public Long getId() {
