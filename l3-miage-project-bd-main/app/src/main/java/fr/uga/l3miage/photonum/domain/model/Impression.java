@@ -9,14 +9,14 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Impression {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // remplacer car String si besoin
     
     @Column(name = "price", nullable = false)
     private Double price;
 
     @ManyToOne
-    private Client person;
+    private Client client;
 
     @OneToOne(optional = true)
     private Article article;
@@ -35,12 +35,12 @@ public abstract class Impression {
         this.price = price;
     }
 
-    public Client getPerson() {
-        return person;
+    public Client getClient() {
+        return client;
     }
 
-    public void setPerson(Client person) {
-        this.person = person;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Article getArticle() {
@@ -54,11 +54,11 @@ public abstract class Impression {
         if(o == null) return false;
         if(!(o instanceof Impression impression)) return false;
         return Objects.equals(price , impression.price)
-            && Objects.equals(person, impression.person)
+            && Objects.equals(client, impression.client)
             && Objects.equals(article, impression.article);
     }
     public int hashCode(){
-        return Objects.hash(price, person, article);
+        return Objects.hash(price, client, article);
     }
 
 }
