@@ -1,21 +1,23 @@
 package fr.uga.l3miage.photonum.domain.model;
 
-import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 
 @Entity
-@Table(name = "Album")
 public class Album extends Impression {
 
-    @Column(name = "title", nullable = false)
+    @Column(nullable = false)
     private String title;
 
-    @OneToMany
+    @OneToOne(fetch = FetchType.EAGER)
+    private Image cover;
+
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Page> pages;
 
     public String getTitle() {
@@ -24,28 +26,17 @@ public class Album extends Impression {
     public void setTitle(String title) {
         this.title = title;
     }
-    public Set<Page> getPageAlbums() {
+    public Image getCover() {
+        return cover;
+    }
+    public void setCover(Image cover) {
+        this.cover = cover;
+    }
+    public Set<Page> getPages() {
         return pages;
     }
-    public void setPageAlbums(Set<Page> pages) {
+    public void setPages(Set<Page> pages) {
         this.pages = pages;
     }
 
-    @Override
-    public boolean equals(Object o){
-        if(this == o) return true;
-        if(!(o instanceof Album album)) return false;
-        if(!super.equals(o)) return false;
-       return  Objects.equals(title, album.title)
-            && Objects.equals(pages, album.pages);
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(title,pages);
-    }
-    
-
-    
-    
 }

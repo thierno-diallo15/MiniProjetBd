@@ -2,10 +2,13 @@ package fr.uga.l3miage.photonum.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.uga.l3miage.photonum.domain.model.Album;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+@Repository
 public class AlbumRepository implements CRUDRepository<Long, Album> {
 
     @PersistenceContext
@@ -14,7 +17,7 @@ public class AlbumRepository implements CRUDRepository<Long, Album> {
     @Override
     public Album save(Album album) {
         entityManager.persist(album);
-        return album;
+        return this.get(album.getId());
     }
 
     @Override
@@ -32,4 +35,11 @@ public class AlbumRepository implements CRUDRepository<Long, Album> {
         return null;
     }
 
+    public List<Album> findAll(){
+        return entityManager.createQuery("from Album").getResultList();
+    }
+
+    public Album update(Album album){
+        return entityManager.merge(album);
+    } 
 }

@@ -2,9 +2,11 @@ package fr.uga.l3miage.photonum.domain.model;
 
 import java.sql.Date;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -18,8 +20,8 @@ public class Calendar extends Impression {
     @Temporal(TemporalType.DATE)
     private Date year;
 
-    @OneToMany
-    private Page[] pages = new Page[12];
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Page> pages;
 
     public Date getyear() {
         return year;
@@ -27,10 +29,10 @@ public class Calendar extends Impression {
     public void setyear(Date year) {
         this.year = year;
     }
-    public Page[] getPages() {
+    public Set<Page> getPages() {
         return pages;
     }
-    public void setPages(Page[] pages) {
+    public void setPages(Set<Page> pages) {
         this.pages = pages;
     }
 

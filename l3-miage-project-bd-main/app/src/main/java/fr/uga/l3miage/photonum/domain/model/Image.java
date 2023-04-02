@@ -37,15 +37,6 @@ public class Image {
     @ManyToOne
     private Client owner;
 
-    // @ManyToOne
-    // private Page page;
-
-    // @ManyToOne
-    // private Frame frame;
-
-    // @ManyToOne
-    // private Print print;
-
     public Long getId() {
         return id;
     }
@@ -110,29 +101,7 @@ public class Image {
         this.owner = owner;
     }
 
-    // public Page getPage() {
-    //     return page;
-    // }
-
-    // public void setPage(Page page) {
-    //     this.page = page;
-    // }
-
-    // public Frame getFrame() {
-    //     return frame;
-    // }
-
-    // public void setFrame(Frame frame) {
-    //     this.frame = frame;
-    // }
-
-    // public Print getPrint() {
-    //     return print;
-    // }
-
-    // public void setPrint(Print print) {
-    //     this.print = print;
-    // }
+    
     public boolean equals(Object o){
         if(o == null) return false;
         if(!(o instanceof Image image)) return false;
@@ -142,13 +111,10 @@ public class Image {
             && Objects.equals(setting, image.setting)
             && Objects.equals(description, image.description)
             && Objects.equals(owner, image.owner);
-            // && Objects.equals(page, image.page)
-            // && Objects.equals(frame, image.frame)
-            // && Objects.equals(print, image.print);
     }
 
     public int hashCode(){
-        return Objects.hash(path, resolution, isShared, setting, description, owner);  //, page, frame, print);
+        return Objects.hash(path, resolution, isShared, setting, description, owner);  
     }
 
 }
