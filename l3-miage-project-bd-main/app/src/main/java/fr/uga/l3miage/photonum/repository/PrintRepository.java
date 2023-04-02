@@ -2,10 +2,13 @@ package fr.uga.l3miage.photonum.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.uga.l3miage.photonum.domain.model.Print;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+@Repository
 public class PrintRepository implements CRUDRepository<Long, Print> {
 
     @PersistenceContext
@@ -31,4 +34,12 @@ public class PrintRepository implements CRUDRepository<Long, Print> {
     public List<Print> all() {
         return null;
     }
+
+    public List<Print> findAll(){
+        return entityManager.createQuery("from Print").getResultList();
+    }
+
+    public Print update(Print print){
+        return entityManager.merge(print);
+    } 
 }

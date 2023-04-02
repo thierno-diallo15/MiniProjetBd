@@ -22,6 +22,8 @@ public interface FrameMapper {
     @Mapping(source = "photos", target = "photoIds", qualifiedByName = "photosToPhotoIds")
     FrameDTO entityToDTO(Frame frame);
 
+    @Mapping(source = "client", target = "clientId", qualifiedByName = "clientToClientId")
+    @Mapping(source = "article", target = "articleId", qualifiedByName = "articleToArticleId")
     @Mapping(source = "photos", target = "photoIds", qualifiedByName = "photosToPhotoIds")
     Collection<FrameDTO> entityToDTO(Iterable<Frame> frames);
     

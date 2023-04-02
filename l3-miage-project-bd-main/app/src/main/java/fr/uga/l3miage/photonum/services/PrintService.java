@@ -1,26 +1,27 @@
 package fr.uga.l3miage.photonum.services;
 
+import org.springframework.stereotype.Service;
+
+import fr.uga.l3miage.photonum.domain.DTO.PrintDTO;
+import fr.uga.l3miage.photonum.domain.mapper.PrintMapper;
+import fr.uga.l3miage.photonum.domain.model.Image;
+import fr.uga.l3miage.photonum.domain.model.Print;
+import fr.uga.l3miage.photonum.repository.ArticleRepository;
+import fr.uga.l3miage.photonum.repository.ClientRepository;
+import fr.uga.l3miage.photonum.repository.ImageRepository;
+import fr.uga.l3miage.photonum.repository.PrintRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import fr.uga.l3miage.photonum.domain.DTO.FrameDTO;
-import fr.uga.l3miage.photonum.domain.mapper.FrameMapper;
-import fr.uga.l3miage.photonum.domain.model.Frame;
-import fr.uga.l3miage.photonum.domain.model.Image;
-import fr.uga.l3miage.photonum.repository.ArticleRepository;
-import fr.uga.l3miage.photonum.repository.ClientRepository;
-import fr.uga.l3miage.photonum.repository.FrameRepository;
-import fr.uga.l3miage.photonum.repository.ImageRepository;
 
 @Service
-public class FrameService {
+public class PrintService {
     
     @Autowired
-    private FrameRepository frameRepository;
+    private PrintRepository printRepository;
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -28,36 +29,36 @@ public class FrameService {
     @Autowired
     private ImageRepository imageRepository;
 
-    private FrameMapper frameMapper = Mappers.getMapper(FrameMapper.class);
+    private PrintMapper printMapper = Mappers.getMapper(PrintMapper.class);
 
-    public List<FrameDTO> getAll(){
-        List<Frame> frames = frameRepository.findAll();
-        return new ArrayList<>(frameMapper.entityToDTO(frames)) ;
+    public List<PrintDTO> getAll(){
+        List<Print> frames = printRepository.findAll();
+        return new ArrayList<>(printMapper.entityToDTO(frames)) ;
     }
 
-    public FrameDTO getById(Long id){
-        Frame frame = frameRepository.get(id);
-        return frameMapper.entityToDTO(frame);
+    public PrintDTO getById(Long id){
+        Print frame = printRepository.get(id);
+        return printMapper.entityToDTO(frame);
     }
 
-    public FrameDTO save(FrameDTO frameDTO){
+    public PrintDTO save(PrintDTO frameDTO){
         //convertir DTO -> l'objet Adresse
-        Frame frame = frameMapper.DTOToEntity(frameDTO);
+        Print frame = printMapper.DTOToEntity(frameDTO);
         remplirEntity(frameDTO, frame);
-        Frame saved = frameRepository.save(frame);
-        return  frameMapper.entityToDTO(saved);
+        Print saved = printRepository.save(frame);
+        return  printMapper.entityToDTO(saved);
     }
 
-    public FrameDTO update(FrameDTO frameDTO){
+    public PrintDTO update(PrintDTO frameDTO){
         //to do: controle le cas ID n'existe pas
-        Frame frame = frameMapper.DTOToEntity(frameDTO);
+        Print frame = printMapper.DTOToEntity(frameDTO);
         remplirEntity(frameDTO, frame);
-        Frame updated = frameRepository.update(frame);
-        return frameMapper.entityToDTO(updated);
+        Print updated = printRepository.update(frame);
+        return printMapper.entityToDTO(updated);
     }
 
     //remplir les champs qui ne sont pas remplis avec Mapper
-    private void remplirEntity(FrameDTO frameDTO, Frame frame){
+    private void remplirEntity(PrintDTO frameDTO, Print frame){
         //ajouter Client selon Id
         frame.setClient(clientRepository.get(frameDTO.getClientId()));
         
