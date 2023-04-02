@@ -1,0 +1,943 @@
+{
+	"info": {
+		"_postman_id": "c76927a8-3180-4656-be90-dc929ec68a05",
+		"name": "projet PhotoNum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20760541"
+	},
+	"item": [
+		{
+			"name": "Client Tests",
+			"item": [
+				{
+					"name": "Get all Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/client",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Client by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/client/302",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"client",
+								"302"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"edgar2.cuba@gmail.com\",\r\n        \"firstName\": \"edgar2\",\r\n        \"lastName\": \"cuba\",\r\n        \"password\": \"dmcs2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/client",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 302,\r\n        \"email\": \"edgar.cuba@gmail.com\",\r\n        \"firstName\": \"really-edgar\",\r\n        \"lastName\": \"cuba\",\r\n        \"password\": \"therealedgar\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/client/302",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"client",
+								"302"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address Tests",
+			"item": [
+				{
+					"name": "Get all Addresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/address/1152",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"address",
+								"1152"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"999 Royal Road, 90003 ARK\",\r\n    \"clientId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Address",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1152,\r\n    \"description\": \"997 Royal Road, 90003 ARK\",\r\n    \"clientId\": 252\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/address/1152",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"address",
+								"1152"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Commande Tests",
+			"item": [
+				{
+					"name": "Get all Commandes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/commande",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"commande"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Commande by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/commande/52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"commande",
+								"52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Commande",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2022-05-04\",\r\n    \"totalPrice\": 43,\r\n    \"clientId\": 102\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/commande",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"commande"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Commande",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 204,\r\n    \"date\": \"2000-12-01\",\r\n    \"totalPrice\": 70,\r\n    \"clientId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/commande/204",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"commande",
+								"204"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article Tests",
+			"item": [
+				{
+					"name": "Get all Articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/article",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Article by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/article/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"article",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Article",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"formatQuality\": \"MAT30x30\",\r\n    \"quantity\": 2,\r\n    \"price\": 10,\r\n    \"commandeId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/article",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Article",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 52,\r\n    \"formatQuality\": \"MAT30x30\",\r\n    \"quantity\": 3,\r\n    \"price\": 15.0,\r\n    \"commandeId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/article/52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"article",
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Image Tests",
+			"item": [
+				{
+					"name": "Get all Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/image",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Image by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/image/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"El Presidente\",\r\n    \"isShared\": true,\r\n    \"path\": \"edgarc/El_Presidente.png\",\r\n    \"resolution\": \"1920x1080\",\r\n    \"setting\": \"portrait\",\r\n    \"viewInfo\": \"official\",\r\n    \"ownerId\": 302\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/image",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Image",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 53,\r\n    \"description\": \"The Real El Presidente\",\r\n    \"isShared\": true,\r\n    \"path\": \"edgarc/Real_Presidente.png\",\r\n    \"resolution\": \"1920x1080\",\r\n    \"setting\": \"portrait\",\r\n    \"viewInfo\": \"official\",\r\n    \"ownerId\": 303\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/image/53",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"image",
+								"53"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Page Tests",
+			"item": [
+				{
+					"name": "Get all Pages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/page",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Page by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/page/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"page",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Page",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"layout\": \"A3\",\r\n    \"photoIds\": [\r\n        53\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/page",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Page",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 52,\r\n    \"layout\": \"A5\",\r\n    \"photoIds\": [\r\n        2, 52, 53\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/page/52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"page",
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Frame Tests",
+			"item": [
+				{
+					"name": "Get all Frames",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/frame",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"frame"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Frame by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/frame/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"frame",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Frame",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 30,\r\n    \"clientId\": 303,\r\n    \"articleId\": 3,\r\n    \"layout\": \"A0\",\r\n    \"photoIds\": [\r\n        52, 53\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/frame",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"frame"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Frame",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"price\": 50.0,\r\n    \"clientId\": 2,\r\n    \"articleId\": 2,\r\n    \"layout\": \"landscape\",\r\n    \"photoIds\": [\r\n        2,\r\n        53\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/frame/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"frame",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Print Tests",
+			"item": [
+				{
+					"name": "Get all Prints",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/print",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"print"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Print by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/print/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"print",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Print",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 300.0,\r\n    \"clientId\": 2,\r\n    \"articleId\": 102,\r\n    \"photoIds\": [\r\n        2\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/print",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"print"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Print",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 103,\r\n    \"price\": 150.0,\r\n    \"clientId\": 2,\r\n    \"articleId\": 102,\r\n    \"photoIds\": [\r\n        2\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/print/103",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"print",
+								"103"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Album Tests",
+			"item": [
+				{
+					"name": "Get all Album",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/album",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"album"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Album by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/album/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"album",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"Merryl 2nd album\",\r\n        \"coverId\": 53,\r\n        \"price\": 400.0,\r\n        \"clientId\": 1,\r\n        \"articleId\": 7,\r\n        \"pageIds\": [\r\n            1, 2\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/album",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"album"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Album",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 153,\r\n    \"title\": \"Merryl 2nd album - new version\",\r\n    \"coverId\": 53,\r\n    \"price\": 300.0,\r\n    \"clientId\": 1,\r\n    \"articleId\": 7,\r\n    \"pageIds\": [\r\n        2\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/photonum/album/153",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"album",
+								"153"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar Tests",
+			"item": [
+				{
+					"name": "Get all Calendar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/photonum/album",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photonum",
+								"album"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
