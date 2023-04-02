@@ -59,7 +59,7 @@ public class ArticleController {
             throw new ServerException("Echec de modification de l'article!");
         }
         else{
-            return new ResponseEntity<>(updated, HttpStatus.CREATED);
+            return new ResponseEntity<>(updated, HttpStatus.OK);
         } 
     }
 }

@@ -5,9 +5,11 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -15,20 +17,15 @@ import jakarta.persistence.Table;
 @Table(name="Page")
 public class Page {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name="layout", nullable = false)
     private String layout;
 
-    @ManyToOne
-    private Calendar calendar;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Image> photos;
 
-    @ManyToOne
-    private Album album;
-
-    @OneToMany
-    private List<Image> photoPages;
 
     public Long getId() {
         return id;
@@ -42,27 +39,24 @@ public class Page {
     public void setLayout(String layout) {
         this.layout = layout;
     }
-    public Calendar getCalendar() {
-        return calendar;
+
+    public List<Image> getPhotos() {
+        return photos;
     }
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
+    public void setPhotos(List<Image> photos) {
+        this.photos = photos;
     }
-    public Album getAlbum() {
-        return album;
-    }
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
+
     public boolean equals(Object o){
         if(o == null) return false;
         if(!(o instanceof Page page )) return false;
         return  Objects.equals(layout, page.layout)
-            && Objects.equals(calendar, page.calendar)
-            && Objects.equals(album, page.album)
-            && Objects.equals(photoPages, page.photoPages);
+            // && Objects.equals(calendar, page.calendar)
+            // && Objects.equals(album, page.album)
+            && Objects.equals(photos, page.photos);
     }
     public int hashCode(){
-        return Objects.hash(layout, calendar, album, photoPages);
+        return Objects.hash(layout, photos);
     }
+    
 }

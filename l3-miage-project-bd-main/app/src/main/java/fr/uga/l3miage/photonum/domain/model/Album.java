@@ -14,8 +14,10 @@ public class Album extends Impression {
 
     @Column(name = "title", nullable = false)
     private String title;
+
     @OneToMany
-    private Set<Page> pageAlbums;
+    private Set<Page> pages;
+
     public String getTitle() {
         return title;
     }
@@ -23,10 +25,10 @@ public class Album extends Impression {
         this.title = title;
     }
     public Set<Page> getPageAlbums() {
-        return pageAlbums;
+        return pages;
     }
-    public void setPageAlbums(Set<Page> pageAlbums) {
-        this.pageAlbums = pageAlbums;
+    public void setPageAlbums(Set<Page> pages) {
+        this.pages = pages;
     }
 
     @Override
@@ -35,12 +37,12 @@ public class Album extends Impression {
         if(!(o instanceof Album album)) return false;
         if(!super.equals(o)) return false;
        return  Objects.equals(title, album.title)
-            && Objects.equals(pageAlbums, album.pageAlbums);
+            && Objects.equals(pages, album.pages);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(title,pageAlbums);
+        return Objects.hash(title,pages);
     }
     
 
