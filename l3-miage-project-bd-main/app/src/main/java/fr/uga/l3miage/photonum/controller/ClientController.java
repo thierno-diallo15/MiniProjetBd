@@ -7,17 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.uga.l3miage.photonum.domain.DTO.ClientDTO;
 import fr.uga.l3miage.photonum.domain.model.Client;
 import fr.uga.l3miage.photonum.services.ClientService;
+import jakarta.validation.ConstraintViolationException;
 
 @RestController
 @RequestMapping(value = "/photonum/client", produces = "application/json")
@@ -65,6 +68,13 @@ public class ClientController {
         else{
             return new ResponseEntity<>(updated, HttpStatus.CREATED);
         } 
+    }
+
+    // poour speficier les differentes erreurs de saisis 
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    ResponseEntity<String>handerValidationToexception(ConstraintViolationException ex){
+        return new ResponseEntity<>(" Erreur " +ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
 }
