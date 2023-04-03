@@ -3,10 +3,14 @@ package fr.uga.l3miage.photonum.controller;
 import java.rmi.ServerException;
 import java.util.List;
 
+import javax.crypto.Cipher;
+
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import fr.uga.l3miage.photonum.domain.DTO.ClientDTO;
+import fr.uga.l3miage.photonum.domain.mapper.ClientMapper;
 import fr.uga.l3miage.photonum.domain.model.Client;
 import fr.uga.l3miage.photonum.services.ClientService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 
 @RestController
@@ -27,6 +34,8 @@ import jakarta.validation.ConstraintViolationException;
 public class ClientController {
     @Autowired
     private ClientService clientService;
+
+    private ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
 
     @GetMapping()
     public List<ClientDTO> findAll(){
@@ -41,7 +50,6 @@ public class ClientController {
         }  
         return clientService.getById(id);
     }
-
     @PostMapping
     @Transactional
     public ResponseEntity<ClientDTO> create(@RequestBody Client newClient) throws ServerException{
@@ -52,6 +60,14 @@ public class ClientController {
         else{
             return new ResponseEntity<>(saved, HttpStatus.CREATED);
         } 
+    }
+    
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Transactional
+    public ResponseEntity deleteClient (@PathVariable("id") Long id) {
+        return clientService.delete(id);
+    
     }
 
     @PutMapping(value = "/{id}")
@@ -74,7 +90,7 @@ public class ClientController {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ResponseEntity<String>handerValidationToexception(ConstraintViolationException ex){
-        return new ResponseEntity<>(" Erreur " +ex.getMessage(),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Erreur " +ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
 }
