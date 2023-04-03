@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.uga.l3miage.photonum.domain.DTO.ClientDTO;
@@ -37,4 +39,14 @@ public class ClientService {
         Client updated = clientRepository.update(client);
         return clientMapper.entityToDTO(updated);
     }
+
+    public ResponseEntity delete(Long id){
+        Client client = clientRepository.get(id);
+        if(client == null){
+            return new ResponseEntity<String>("Client not found",HttpStatus.NOT_FOUND);
+        }
+        clientRepository.delete(client);
+        return new ResponseEntity<String>("Client deleted ",HttpStatus.OK);
+    }
+
 }

@@ -10,8 +10,8 @@ import fr.uga.l3miage.photonum.domain.model.Client;
 @Mapper
 public interface ClientMapper {
     ClientDTO entityToDTO(Client client);
-    //Client DTOToEntity(ClientDTO clientDTO);
+    Client DTOToEntity(ClientDTO clientDTO);
 
     Collection<ClientDTO> entityToDTO(Iterable<Client> clients);
-    //Collection<Client> DTOToEntity(Iterable<ClientDTO> clientsDTO);
+    Collection<Client> DTOToEntity(Iterable<ClientDTO> clientsDTO);
 }

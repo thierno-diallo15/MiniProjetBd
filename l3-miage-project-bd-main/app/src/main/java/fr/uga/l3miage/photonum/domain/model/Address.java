@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 
 
 
@@ -21,10 +22,12 @@ public class Address {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank( message = " description is requierd ")
     private String description;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotBlank( message = " L'id client is requierd ")
     private Client client;
 
     public Long getId() {

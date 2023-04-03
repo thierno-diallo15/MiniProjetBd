@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Article")
@@ -22,12 +23,15 @@ public class Article {
     
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotBlank( message = " formatQuality is requierd")
     private Catalog formatQuality;
 
     @Column(nullable = false)
+    @NotBlank( message = " quantity ")
     private int quantity;
     
     @Column(nullable = false)
+    @NotBlank( message = " price is requierd ")
     private Double price;
     
     @ManyToOne

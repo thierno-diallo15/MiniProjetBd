@@ -7,17 +7,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Album extends Impression {
 
     @Column(nullable = false)
+    @NotBlank(message = "title is requierd")
     private String title;
 
     @OneToOne(fetch = FetchType.EAGER)
+    @NotBlank( message = " cover is requierd ")
     private Image cover;
 
     @OneToMany(fetch = FetchType.EAGER)
+    @NotBlank( message = " page is requierd ")
     private Set<Page> pages;
 
     public String getTitle() {
